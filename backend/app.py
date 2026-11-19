@@ -114,6 +114,7 @@ from schema import discover_schemas, resolve_schema, validate_selective_disclosu
 from verification_receipt import build_verification_receipt
 from stego import canonical_metadata_hash, embed_metadata, extract_metadata, sha256_file
 from capture_attestation import (
+    build_assurance_schema,
     canonical_attestation_hash,
     decode_attestation,
     verify_device_commitment,
@@ -2193,6 +2194,7 @@ def create_app() -> Flask:
                 "valid": valid,
                 "attestation_hash": attestation_hash,
                 "checks": checks,
+                "assurance": build_assurance_schema(decoded, checks),
             }
         )
 
